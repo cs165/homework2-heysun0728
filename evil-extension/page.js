@@ -12,18 +12,16 @@ const MATCH_LIST = {
 
 function transformTextNodes(node) {
   // TODO(you): Implement this function! See HW spec for details.
-  if(node.tagName!="SCRIPT"){
-    if (node.nodeType === Node.TEXT_NODE) {
-      //console.log(node.textContent)
-      for (var key in MATCH_LIST){
-        node.textContent = node.textContent.replace(key,MATCH_LIST[key])
-        //console.log(key+':' + node.textContent);
-      }
-      node.textContent = node.textContent.replace(/zzz/g,"")
+  if (node.nodeType === Node.TEXT_NODE) {
+    //console.log(node.textContent)
+    for (var key in MATCH_LIST){
+      node.textContent = node.textContent.replace(key,MATCH_LIST[key])
+      //console.log(key+':' + node.textContent);
     }
-    for (const child of node.childNodes) {
-      transformTextNodes(child);
-    }
+    node.textContent = node.textContent.replace(/zzz/g,"")
+  }
+  for (const child of node.childNodes) {
+    transformTextNodes(child);
   }
 }
 
